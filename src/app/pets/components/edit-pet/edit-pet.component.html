@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 p-0">
+      <app-navbar></app-navbar>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="d-flex col-12 justify-content-center">
+      <h2>Editando a {{ this.pet?.name }}</h2>
+    </div>
+    <div class="col-12">
+      <form
+        [formGroup]="editPet"
+        class="row justify-content-center"
+        (ngSubmit)="sendForm()"
+      >
+        <mat-form-field appearance="fill" class="col-md-10 col-12">
+          <mat-label>Nombre Mascotaa</mat-label>
+          <input matInput formControlName="name" [disabled]="!pet._id" />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-md-10 col-12">
+          <mat-label>Raza</mat-label>
+          <mat-select
+            formControlName="breed"
+            [disabled]="!this.pet.breed._id"
+            [value]="this.pet.breed._id"
+            (selectionChange)="checkBreed($event)"
+          >
+            <mat-option value="new">No esta en la lista</mat-option>
+            <mat-option *ngFor="let breed of breeds" [value]="breed._id"
+              >{{ breed.breed }} - {{ breed.size }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field
+          *ngIf="newBreed"
+          appearance="fill"
+          class="col-md-10 col-12"
+        >
+          <mat-label>Tipo de mascota</mat-label>
+          <mat-select formControlName="animal">
+            <mat-option *ngFor="let animal of animals" value="{{ animal._id }}"
+              >{{ animal.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field
+          *ngIf="newBreed"
+          appearance="fill"
+          class="col-md-10 col-12"
+        >
+          <mat-label>Nombre de la Raza</mat-label>
+          <input matInput formControlName="newBreedName" />
+        </mat-form-field>
+        <mat-form-field
+          *ngIf="newBreed"
+          appearance="fill"
+          class="col-md-10 col-12"
+        >
+          <mat-label>Tamaño</mat-label>
+          <mat-select formControlName="size">
+            <mat-option *ngFor="let size of sizes" value="{{ size }}"
+              >{{ size }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-md-10 col-12">
+          <mat-label>Descripción</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+        <div class="col-12 d-flex justify-content-center">
+          <button
+            mat-raised-button
+            [disabled]="this.editPet.invalid"
+            style="color: green"
+          >
+            Actualizar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

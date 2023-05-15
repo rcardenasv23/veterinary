@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 p-0">
+      <div
+        class="d-flex justify-content-center bg-success navbar-props align-items-center"
+      >
+        <button
+          mat-icon-button
+          aria-label="Options menu"
+          type="button"
+          class="position-absolute start-0"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#VeterinaryOptions"
+          aria-controls="offcanvasExample"
+        >
+          <span class="mat-icon-white"
+            ><span class="material-symbols-outlined"> menu </span></span
+          >
+        </button>
+        <button routerLink="/" class="clean-button">
+          <h1 class="text-white m-0">Veterinaria ABBI</h1>
+        </button>
+        <div></div>
+      </div>
+
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="VeterinaryOptions"
+        aria-labelledby="VeterinaryOptions"
+      >
+        <div class="offcanvas-header d-flex justify-content-between">
+          <div class="offcanvas-title text-success" id="VeterinaryOptions">
+            <h2 class="m-0">Veterinary ABBI</h2>
+          </div>
+          <button
+            type="button"
+            class="clean-button"
+            data-bs-dismiss="offcanvas"
+          >
+            X
+          </button>
+        </div>
+        <div class="offcanvas-body container-fluid">
+          <div class="row">
+            <button
+              routerLink="/add-pet"
+              class="col-12 btn d-flex justify-content-between"
+            >
+              <p class="p-0 m-0">Agregar una nueva mascota</p>
+              <div>
+                <span class="material-symbols-outlined"> add </span>
+                <span class="material-symbols-outlined"> pets </span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
